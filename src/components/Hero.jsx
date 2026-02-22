@@ -7,6 +7,7 @@ import {
   Instagram,
 } from "lucide-react";
 
+
 const roles = [
   "Ml Engineer",
   "React Engineer",
@@ -175,16 +176,37 @@ export default function HeroSection() {
         </div>
 
         {/* Social Links */}
-        <div className="flex gap-4 justify-center mt-10">
-          {[Github, Linkedin, Instagram, Mail].map((Icon, i) => (
-            <div
-              key={i}
-              className="p-3 border-2 border-black bg-white shadow-[4px_4px_0px_black] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all cursor-pointer"
-            >
-              <Icon size={20} />
-            </div>
-          ))}
-        </div>
+        {/* Social Links */}
+      <div className="flex justify-center gap-4 mt-8">
+
+        <a
+          href="https://github.com/Gaurav-Kanse"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group border-2 border-black p-3 bg-white shadow-[4px_4px_0px_black] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-300"
+        >
+          <Github className="w-5 h-5 text-black" />
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/gaurav-kanse-994b70348"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group border-2 border-black p-3 bg-white shadow-[4px_4px_0px_black] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-300"
+        >
+          <Linkedin className="w-5 h-5 text-black" />
+        </a>
+
+        <a
+          href="https://www.instagram.com/gaurav__.k/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group border-2 border-black p-3 bg-white shadow-[4px_4px_0px_black] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-300"
+        >
+          <Instagram className="w-5 h-5 text-black" />
+        </a>
+
+      </div>
       </div>
       {/* Bottom-right Dev Stats */}
         <div className="absolute bottom-10 right-6 md:right-10 z-10 hidden md:block">
