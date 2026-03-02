@@ -14,19 +14,19 @@ const ContactSection = () => {
 
     try {
       await emailjs.sendForm(
-        "service_4mjvr2o",           // ✅ Correct Service ID
-        "template_kimkd7a",          // ✅ Your Template ID
+        "service_4mjvr2o",          
+        "template_kimkd7a",        
         form.current,
         {
-          publicKey: "Hw-j8wBFLckK8F3QW",  // ✅ Public Key
+          publicKey: "Hw-j8wBFLckK8F3QW",  
         }
       );
 
-      setStatus("Message sent successfully 🔥");
+      setStatus("Message sent successfully ");
       form.current.reset();
     } catch (error) {
       console.error("FULL EMAIL ERROR:", error);
-      setStatus("Failed to send message ❌");
+      setStatus("Failed to send message ");
     }
 
     setLoading(false);
@@ -118,5 +118,4 @@ const ContactSection = () => {
     </SectionBlock>
   );
 };
-
 export default ContactSection;
