@@ -3,7 +3,7 @@ import emailjs from "@emailjs/browser";
 import SectionBlock from "./SectionBlock";
 
 const ContactSection = () => {
-  const form = useRef();
+  const form = useRef(null);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
 
@@ -14,37 +14,22 @@ const ContactSection = () => {
 
     try {
       await emailjs.sendForm(
-        "service_ij8xb1d",
-        "template_kimkd7a",
+        "service_4mjvr2o",           // ✅ Correct Service ID
+        "template_kimkd7a",          // ✅ Your Template ID
         form.current,
         {
-          publicKey: "Hw-j8wBFLckK8F3QW",
+          publicKey: "Hw-j8wBFLckK8F3QW",  // ✅ Public Key
         }
       );
 
       setStatus("Message sent successfully 🔥");
       form.current.reset();
     } catch (error) {
-      console.error("EMAIL ERROR:", error);
+      console.error("FULL EMAIL ERROR:", error);
       setStatus("Failed to send message ❌");
     }
 
     setLoading(false);
-  };
-
-  const sendWhatsApp = () => {
-    const name = form.current.name.value || "";
-    const email = form.current.email.value || "";
-    const message = form.current.message.value || "";
-
-    const text = encodeURIComponent(
-      `Hello Gaurav,\n\nMy name is ${name}\nEmail: ${email}\n\n${message}`
-    );
-
-    window.open(
-      `https://wa.me/917588441106?text=${text}`,
-      "_blank"
-    );
   };
 
   return (
@@ -69,10 +54,15 @@ const ContactSection = () => {
             <p className="font-medium">eldenlord2527@gmail.com</p>
           </div>
 
-          <div className="border border-black/10 p-5">
-            <p className="text-xs font-mono uppercase text-black/40">WhatsApp</p>
-            <p className="font-medium">+91 75884 41106</p>
-          </div>
+          {/* WhatsApp Button */}
+          <a
+            href="https://wa.me/917588441106"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-4 px-6 py-3 border-2 border-black bg-white text-black uppercase tracking-widest font-bold shadow-[4px_4px_0px_black] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-black hover:text-white transition-all duration-300"
+          >
+            Message on WhatsApp →
+          </a>
         </div>
 
         {/* RIGHT SIDE FORM */}
@@ -102,32 +92,18 @@ const ContactSection = () => {
             className="w-full border border-black/20 px-5 py-4 uppercase text-sm tracking-wider outline-none focus:border-black resize-none"
           />
 
-          <div className="space-y-4">
-
-            {/* Email Button */}
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-black text-white py-4 uppercase tracking-widest font-bold hover:bg-white hover:text-black border-2 border-black transition disabled:opacity-50"
-            >
-              {loading ? "Sending..." : "Send Message →"}
-            </button>
-
-            {/* WhatsApp Button */}
-            <button
-              type="button"
-              onClick={sendWhatsApp}
-              className="w-full border-2 border-black py-4 uppercase tracking-widest font-bold hover:bg-black hover:text-white transition"
-            >
-              Send via WhatsApp →
-            </button>
-
-          </div>
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-black text-white py-4 uppercase tracking-widest font-bold hover:bg-white hover:text-black border-2 border-black transition disabled:opacity-50"
+          >
+            {loading ? "Sending..." : "Send Message →"}
+          </button>
 
           {status && (
             <p
               className={`font-mono text-sm ${
-                status.includes("success")
+                status.includes("successfully")
                   ? "text-green-600"
                   : "text-red-600"
               }`}
